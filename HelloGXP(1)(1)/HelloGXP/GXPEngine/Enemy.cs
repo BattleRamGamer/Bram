@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class Enemy : Sprite
+class Enemy : AnimationSprite
 {
     
 
-    public Enemy() : base("colors.png")
+    public Enemy(string fileName, int cols, int rows) : base(fileName, cols, rows)
     {
         
         SetOrigin(width / 2, height / 2);
@@ -17,8 +17,17 @@ class Enemy : Sprite
 
     
 
-    void Update()
+    public void Update()
     {
-        
+        Act();
+    }
+
+
+
+
+    protected virtual void Act()
+    {
+        Console.WriteLine("Behavior.Act: not implemented");
+        // Even better: make this an *abstract* method to force implementing it in subclasses!
     }
 }

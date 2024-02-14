@@ -2,8 +2,15 @@ using System;                   // System contains a lot of default C# libraries
 using GXPEngine;                // GXPEngine contains the engine
 
 public class MyGame : Game {
+
+	ShootingEnemy sEnemy;
+	
+	
+	
+	
+	
 	// Declare the Sprite variables:
-	Sprite spaceShip;
+	TemporaryPlayerClass spaceShip;
 	AnimationSprite character;
 	EasyDraw background;
 	EasyDraw button;
@@ -25,8 +32,11 @@ public class MyGame : Game {
 
 		FillBackground();
 
+
+
+
 		// Create a sprite from an image file (png, in bin/Debug):
-		spaceShip = new Sprite("playerShip1_blue.png");
+		spaceShip = new TemporaryPlayerClass("playerShip1_blue.png");
 		// Set the (rotation) origin of the space ship to its center:
 		// (spaceShip.width and spaceShip.height refer to the width and height of the sprite, in pixels)
 		spaceShip.SetOrigin(spaceShip.width / 2, spaceShip.height / 2);
@@ -62,6 +72,14 @@ public class MyGame : Game {
 		);
 		information.SetOrigin(0, information.height);
 		information.SetXY(0, 0.75f * height);
+
+
+		sEnemy = new ShootingEnemy("checkers.png", 1, 1);
+		sEnemy.SetXY(200, 200);
+		AddChild(sEnemy);
+
+
+
 
 		// Add all sprites to the engine, so that they will be displayed every frame:
 		// (The order that we add them is the order that they will be drawn.)
